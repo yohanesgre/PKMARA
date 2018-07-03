@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">PKM ARA</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="placeholder_lorem_ipsum">Lorem ipsum dolor set it</string>
+    <string name="start_by_swiping_left">Start by swiping left.</string>
+    <!-- Main Layout -->
+    <string name="tvPelanggan">YOUR NAME</string>
+    <string name="tvNomorMeja">SEAT</string>
+    <string name="roboto_light">sans-serif-light</string>
+    <string name="menu_desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet eleifend risus, sit amet pulvinar ex. Cras in est feugiat, venenatis dolor eget, iaculis nisi. Nam malesuada ac tellus vitae tempus. Vivamus feugiat leo eros. Praesent eget diam ligula. Quisque viverra at tortor eget hendrerit. Morbi nec vestibulum arcu.Nam augue est, posuere iaculis ullamcorper at, fringilla at velit. Praesent a vehicula nisl. Aenean sit amet ullamcorper leo. Sed urna ipsum, viverra ut imperdiet non, luctus sed ex. Sed ornare dui a mauris faucibus, nec varius eros feugiat. Sed sit amet tincidunt magna. Donec et arcu arcu. Aenean sem enim, bibendum fermentum ligula nec, aliquam viverra elit. Nullam tincidunt sodales hendrerit. Fusce interdum est erat, sit amet bibendum nibh gravida rhoncus. Donec at risus justo. Sed sapien lorem, pulvinar a ligula sed, tristique pellentesque libero. Donec urna risus, euismod vulputate nunc ac, posuere imperdiet neque. Donec feugiat dolor vitae nunc mollis, lacinia tincidunt erat lobortis. Sed ut accumsan metus. Proin auctor semper nisl. Vivamus non diam eros. In tristique ultrices nunc et pulvinar. Morbi vel lectus pretium, volutpat lorem.</string>
+</resources>

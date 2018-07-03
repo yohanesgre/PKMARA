@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/bghome"
+    tools:context=".activities.presenter.MainActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="225dp"
+        android:layout_height="145dp"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/logo_smartwaiters"
+        android:layout_marginBottom="20dp"/>
+
+    <TextView
+        android:id="@+id/tvYourName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/tvPelanggan"
+        android:textSize="25dp"
+        android:padding="10dp"
+        android:textColor="#ffffff"/>
+
+    <EditText
+        android:id="@+id/etNamaPelanggan"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:textColor="#333"
+        android:textSize="15dp"
+        android:padding="10dp"/>
+
+    <TextView
+        android:id="@+id/tvSeat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/tvNomorMeja"
+        android:gravity="center"
+        android:textSize="25dp"
+        android:textColor="#ffffff"/>
+
+    <TextView
+        android:id="@+id/tvNoSeat"
+        android:paddingHorizontal="50dp"
+        android:paddingVertical="3dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:background="#ffffff"
+        android:text="1"
+        android:textSize="25dp" />
+
+    <Button
+        android:layout_marginTop="20dp"
+        android:id="@+id/btnOrder"
+        android:layout_width="140dp"
+        android:layout_height="50dp"
+        android:scaleType="fitXY"
+        android:background="@drawable/btn_order"
+        android:onClick="openActivity2"
+        android:text="Order"
+        android:textSize="18dp"
+        android:textColor="#ffffff"/>
+</LinearLayout>
