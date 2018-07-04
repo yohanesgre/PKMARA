@@ -35,7 +35,7 @@ public class MenuObject{
         return quantitiy;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 }

@@ -1,5 +1,7 @@
 package com.example.pkmara.models;
 
+import android.view.Menu;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -56,12 +58,11 @@ public class OrderJSON {
     }
 
     public void removeMenuObj (String menuName){
-        int index = searchMenu(menuName);
-        arrMenuObj.remove(index);
+        arrMenuObj.remove(findIndexMenuObjectByName(menuName));
     }
 
     public void updateMenuObjByObject(MenuObject mO){
-        arrMenuObj.set(searchMenu(mO.getMenuName()), mO);
+        arrMenuObj.set(findIndexMenuObjectByName(mO.getMenuName()), mO);
     }
 
     public void updateMenuObjByValue (String menuName, int quantity, int price){
@@ -69,32 +70,23 @@ public class OrderJSON {
         mMO.setMenuName(menuName);
         mMO.setQuantitiy(quantity);
         mMO.setPrice(price);
-        int index = searchMenu(menuName);
-        arrMenuObj.set(index, mMO);
+        arrMenuObj.set(findIndexMenuObjectByName(menuName), mMO);
     }
 
     public MenuObject getMenuByName(String menuName){
-        MenuObject menu = arrMenuObj.get(searchMenu(menuName));
+        MenuObject menu = arrMenuObj.get(findIndexMenuObjectByName(menuName));
         return menu;
     }
 
-    public int searchMenu (String menuName){
-        boolean found = false;
-        Iterator<MenuObject> iter = arrMenuObj.iterator();
-        MenuObject curMO = null;
-        int pos = 0;
-        while (iter.hasNext() == true){
-            pos++;
-            curMO = (MenuObject)iter.next();
-            if ((curMO.getMenuName()).equals(menuName)){
-                found = true;
+    public int findIndexMenuObjectByName(String menuName) {
+        int index = 0;
+        for (MenuObject mO : arrMenuObj) {
+            if (mO.getMenuName().equals(menuName)) {
+                index = arrMenuObj.indexOf(mO);
                 break;
             }
         }
-        if (found == false){
-            pos = 0;
-        }
-        return pos;
+        return index;
     }
 
     public void addMenuToOrderJson(){

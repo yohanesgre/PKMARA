@@ -38,7 +38,7 @@ public class MenuDetailActivityViewImpl implements MenuDetailActivityView {
     final String TAG = "Debug";
 
 
-    public MenuDetailActivityViewImpl(Context context, ViewGroup container, String n, String p){
+    public MenuDetailActivityViewImpl(Context context, ViewGroup container, String n, String p, int q){
         mContext = context;
         mAppCompatActivity = (AppCompatActivity)context;
         mRootView = LayoutInflater.from(context).inflate(R.layout.activity_menudetail_layout, container);
@@ -48,9 +48,28 @@ public class MenuDetailActivityViewImpl implements MenuDetailActivityView {
         tvPrice = (TextView) mRootView.findViewById(R.id.tvMenuPrice);
         tvPrice.setInputType(InputType.TYPE_NULL);
         mNumberPicker =  (NumberPicker)mRootView.findViewById(R.id.horizontal_number_picker);
+        mNumberPicker.setValue(q);
         mNumberPicker.setMinValue(0);
         mNumberPicker.setMaxValue(10);
-        menuPrice = Integer.parseInt(p);
+        Log.d("Q", "Q: " + String.valueOf(q));
+        if (q == 0){
+            tvPrice.setText("Rp. ");
+            menuPrice = Integer.parseInt(p);
+            Log.d("Q", "Q: 000");
+        }
+        else if (q == 1){
+            Log.d("Q", "Q: " + String.valueOf(q));
+            menuPrice = Integer.parseInt(p);
+            tvPrice.setText("Rp. " + String.valueOf(menuPrice));
+
+        } else if (q > 1){
+            Log.d("Q", "Q: " + String.valueOf(q));
+            menuPrice = Integer.parseInt(p);
+            menuPriceTot = menuPrice;
+            menuPrice = Integer.parseInt(p)/q;
+            tvPrice.setText("Rp. " + String.valueOf(menuPriceTot));
+
+        }
         mNumberPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {

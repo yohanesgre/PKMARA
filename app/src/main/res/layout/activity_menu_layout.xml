@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    tools:context=".activities.presenter.MenuActivity">
 
     <TextView
         android:text="Nama Pelanggan"
@@ -23,6 +24,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Buy" />
+    <Button
+        android:id="@+id/btCart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cart" />
+
     <devlight.io.library.ntb.NavigationTabBar
         android:id="@+id/ntb_horizontal"
         android:layout_width="match_parent"

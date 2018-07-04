@@ -40,11 +40,12 @@ public class MenuActivity extends AppCompatActivity {
     String name;
     final String TAG = "Debug";
     Button btnBuy;
+    Button btnCart;
 
     protected void onCreate (Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         mOrderJSON = MainActivity.mOrderJSON;
-        name = mOrderJSON.getName().toString();
+        name = mOrderJSON.getName();
         mMenuActivityImpl = new MenuActivityViewImpl(this, null, name);
         setContentView(mMenuActivityImpl.getRootView());
         mViewPager = mMenuActivityImpl.getViewPager();
@@ -55,12 +56,33 @@ public class MenuActivity extends AppCompatActivity {
                 selectMenu();
             }
         });
+        btnCart = (Button)mMenuActivityImpl.getRootView().findViewById(R.id.btCart);
+        btnCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cartMenu();
+            }
+        });
+
     }
 
     public void selectMenu(){
         Intent intent = new Intent(this, MenuDetailActivity.class);
-        intent.putExtra("MENU_NAME", mMenuActivityImpl.getSwipeItem().title);
-        intent.putExtra("MENU_PRICE", mMenuActivityImpl.getSwipeItem().description);
+        if (mOrderJSON.getArrMenuObj().isEmpty()){
+            intent.putExtra("MENU_NAME", mMenuActivityImpl.getSwipeItem().title);
+            intent.putExtra("MENU_PRICE", mMenuActivityImpl.getSwipeItem().description);
+        }else {
+            if (mOrderJSON.getArrMenuObj().get(mOrderJSON.findIndexMenuObjectByName(mMenuActivityImpl.getSwipeItem().title)).getMenuName().equals(mMenuActivityImpl.getSwipeItem().title)) {
+                intent.putExtra("MENU_NAME", mMenuActivityImpl.getSwipeItem().title);
+                intent.putExtra("MENU_PRICE", String.valueOf(mOrderJSON.getArrMenuObj().get(mOrderJSON.findIndexMenuObjectByName(mMenuActivityImpl.getSwipeItem().title)).getPrice()));
+                Log.d("DEBUG", String.valueOf(mOrderJSON.getArrMenuObj().get(mOrderJSON.findIndexMenuObjectByName(mMenuActivityImpl.getSwipeItem().title)).getPrice()));
+                intent.putExtra("MENU_QUANTITY", mOrderJSON.getArrMenuObj().get(mOrderJSON.findIndexMenuObjectByName(mMenuActivityImpl.getSwipeItem().title)).getQuantitiy());
+            } else {
+                intent.putExtra("MENU_NAME", mMenuActivityImpl.getSwipeItem().title);
+                intent.putExtra("MENU_PRICE", mMenuActivityImpl.getSwipeItem().description);
+            }
+        }
+
         startActivity(intent);
         //String qtyStr = mMenuActivityImpl.getSwipeItem().description;
         //int qtyInt = Integer.parseInt(qtyStr);
@@ -69,5 +91,10 @@ public class MenuActivity extends AppCompatActivity {
         //menuObject.setQuantitiy(qtyInt);
         //Log.d(TAG, "Nama Menu: " + menuObject.getMenuName() + " | " + "Quantity: " + menuObject.getQuantitiy());
         //mOrderJSON.addMenuObj(menuObject);
+    }
+
+    public void cartMenu(){
+        Intent intent = new Intent(this, CartActivity.class);
+        startActivity(intent);
     }
 }
