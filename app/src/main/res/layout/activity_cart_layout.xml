@@ -18,4 +18,10 @@
         android:gravity="center"
         android:text="No Records"
         android:visibility="gone" />
+    <Button
+        android:layout_gravity="center"
+        android:text="Check Out"
+        android:id="@+id/btnCheckOut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </LinearLayout>

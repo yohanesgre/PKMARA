@@ -21,14 +21,14 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.shawnlin:number-picker:2.4.6'
-    implementation 'com.android.support:appcompat-v7:25.4.0'
-    implementation 'com.android.support:design:25.4.0'
+    implementation 'com.android.support:appcompat-v7:26.0.0-alpha1'
+    implementation 'com.android.support:design:26.0.0-alpha1'
     implementation 'com.r0adkll:slidableactivity:2.0.6'
     implementation 'com.roughike:swipe-selector:1.0.6'
     implementation 'devlight.io:navigationtabbar:1.2.5'
     implementation 'com.github.florent37:materialtextfield:1.0.7'
     implementation 'com.google.code.gson:gson:2.8.1'
-    implementation 'com.android.support:recyclerview-v7:25.4.0'
+    implementation 'com.android.support:recyclerview-v7:26.0.0-alpha1'
     implementation "com.daimajia.swipelayout:library:1.2.0@aar"
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'

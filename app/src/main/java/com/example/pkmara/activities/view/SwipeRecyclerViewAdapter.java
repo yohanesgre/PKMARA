@@ -109,12 +109,12 @@ public class SwipeRecyclerViewAdapter extends RecyclerSwipeAdapter<SwipeRecycler
         viewHolder.Delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String mName = menuList.get(position).getMenuName();
+                //String mName = menuList.get(position).getMenuName();
                 mItemManger.removeShownLayouts(viewHolder.swipeLayout);
                 menuList.remove(position);
-                Log.d("Debug", "MenuName: " + mName);
-                Log.d("Debug", "Position: " + String.valueOf(position));
-               ; mOrderJson.removeMenuObj(mName);
+                //Log.d("Debug", "MenuName: " + mName);
+                //Log.d("Debug", "Position: " + String.valueOf(position));
+                //mOrderJson.removeMenuObj(mName);
                 notifyItemRemoved(position);
                 notifyItemRangeChanged(position, menuList.size());
                 mItemManger.closeAllItems();
@@ -124,16 +124,7 @@ public class SwipeRecyclerViewAdapter extends RecyclerSwipeAdapter<SwipeRecycler
 
         mItemManger.bindView(viewHolder.itemView, position);
     }
-    private int findIndexMenuObjectByName(String menuName) {
-        int index = 0;
-        for (MenuObject mO : menuList) {
-            if (mO.getMenuName() == menuName) {
-                index = menuList.indexOf(mO);
-                break;
-            }
-        }
-        return index;
-    }
+
     @Override
     public int getItemCount() {
         return menuList.size();
