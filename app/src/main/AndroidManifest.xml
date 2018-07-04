@@ -17,6 +17,8 @@
         </activity>
         <activity android:name=".activities.presenter.MenuActivity"
             android:parentActivityName=".activities.presenter.MainActivity"/>
+        <activity android:name=".activities.presenter.CartActivity"
+            android:parentActivityName=".activities.presenter.MenuActivity"/>
         <activity android:name=".activities.presenter.MenuDetailActivity"
             android:theme="@style/AppTheme.SlidrActivityTheme"
             android:parentActivityName=".activities.presenter.MenuActivity"/>

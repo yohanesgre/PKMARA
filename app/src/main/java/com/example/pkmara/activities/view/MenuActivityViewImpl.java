@@ -15,6 +15,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.pkmara.R;
+import com.r0adkll.slidr.Slidr;
+import com.r0adkll.slidr.model.SlidrConfig;
+import com.r0adkll.slidr.model.SlidrInterface;
+import com.r0adkll.slidr.model.SlidrPosition;
 import com.roughike.swipeselector.SwipeItem;
 import com.roughike.swipeselector.SwipeSelector;
 

@@ -1,17 +1,26 @@
 package com.example.pkmara.models;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Set;
 
 public class OrderJSON {
     JSONObject orderObject;
     MenuObject menuObject;
     ArrayList<MenuObject> arrMenuObj;
+    Set<MenuObject> setMenuObj;
+    Gson objGson;
 
     public OrderJSON(String n, int s){
+        objGson = new GsonBuilder().setPrettyPrinting().create();
         orderObject = new JSONObject();
         arrMenuObj = new ArrayList<MenuObject>();
         try{
@@ -41,21 +50,9 @@ public class OrderJSON {
         return seat;
     }
 
-    public String getStringSeat(){
-        int seat = 0;
-        String s = "";
-        try{
-            seat = orderObject.getInt("seat");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        s = String.valueOf(seat);
-        return s;
-    }
-
     public void addMenuObj (MenuObject mO){
         menuObject = mO;
-        arrMenuObj.add(menuObject);
+        arrMenuObj.add(mO);
     }
 
     public void removeMenuObj (String menuName){
@@ -63,15 +60,25 @@ public class OrderJSON {
         arrMenuObj.remove(index);
     }
 
-    public void updateMenuObj (String menuName, int quantity){
+    public void updateMenuObjByObject(MenuObject mO){
+        arrMenuObj.set(searchMenu(mO.getMenuName()), mO);
+    }
+
+    public void updateMenuObjByValue (String menuName, int quantity, int price){
         MenuObject mMO = new MenuObject();
         mMO.setMenuName(menuName);
         mMO.setQuantitiy(quantity);
+        mMO.setPrice(price);
         int index = searchMenu(menuName);
         arrMenuObj.set(index, mMO);
     }
 
-    private int searchMenu (String menuName){
+    public MenuObject getMenuByName(String menuName){
+        MenuObject menu = arrMenuObj.get(searchMenu(menuName));
+        return menu;
+    }
+
+    public int searchMenu (String menuName){
         boolean found = false;
         Iterator<MenuObject> iter = arrMenuObj.iterator();
         MenuObject curMO = null;
@@ -88,6 +95,19 @@ public class OrderJSON {
             pos = 0;
         }
         return pos;
+    }
+
+    public void addMenuToOrderJson(){
+        setMenuObj = new HashSet<>(arrMenuObj);
+        try{
+            orderObject.put("Menus", setMenuObj);
+        } catch (JSONException e){
+            e.printStackTrace();
+        }
+    }
+
+    public ArrayList<MenuObject> getArrMenuObj() {
+        return arrMenuObj;
     }
 }
 

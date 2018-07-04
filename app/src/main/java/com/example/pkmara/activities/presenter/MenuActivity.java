@@ -37,7 +37,6 @@ public class MenuActivity extends AppCompatActivity {
     MenuActivityViewImpl mMenuActivityImpl;
     ViewPager mViewPager;
     OrderJSON mOrderJSON;
-    MenuObject menuObject;
     String name;
     final String TAG = "Debug";
     Button btnBuy;
@@ -61,6 +60,7 @@ public class MenuActivity extends AppCompatActivity {
     public void selectMenu(){
         Intent intent = new Intent(this, MenuDetailActivity.class);
         intent.putExtra("MENU_NAME", mMenuActivityImpl.getSwipeItem().title);
+        intent.putExtra("MENU_PRICE", mMenuActivityImpl.getSwipeItem().description);
         startActivity(intent);
         //String qtyStr = mMenuActivityImpl.getSwipeItem().description;
         //int qtyInt = Integer.parseInt(qtyStr);

@@ -1,51 +1,46 @@
 package com.example.pkmara.activities.presenter;
 
-import android.graphics.Color;
+import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
 
-import com.example.pkmara.R;
 import com.example.pkmara.activities.view.MenuDetailActivityViewImpl;
-import com.r0adkll.slidr.Slidr;
-import com.r0adkll.slidr.model.SlidrConfig;
-import com.r0adkll.slidr.model.SlidrInterface;
-import com.r0adkll.slidr.model.SlidrPosition;
+import com.example.pkmara.models.MenuObject;
+import com.example.pkmara.models.OrderJSON;
 
 
 public class MenuDetailActivity extends AppCompatActivity {
     MenuDetailActivityViewImpl mMenuDetailActivityViewImp;
-    private SlidrInterface slidr;
-    private SlidrConfig slidrConfig;
     String menuName;
-    int price;
+    String menuPrice;
+    OrderJSON mOrderJSON;
+    MenuObject menuObject;
+    final String TAG = "Debug";
 
     protected void onCreate (Bundle savedInstanceState){
-        menuName = getIntent().getStringExtra("MENU_NAME");
         super.onCreate(savedInstanceState);
-        mMenuDetailActivityViewImp = new MenuDetailActivityViewImpl(this, null, menuName);
+        mOrderJSON = MainActivity.mOrderJSON;
+        menuName = getIntent().getStringExtra("MENU_NAME");
+        menuPrice = getIntent().getStringExtra("MENU_PRICE");
+        mMenuDetailActivityViewImp = new MenuDetailActivityViewImpl(this, null, menuName, menuPrice);
         setContentView(mMenuDetailActivityViewImp.getRootView());
-        int primaryColor = getResources().getColor(R.color.primaryDark);
-        int secondaryColor = getResources().getColor(R.color.colorAccent);
-        slidrConfig = new SlidrConfig.Builder()
-                .primaryColor(primaryColor)
-                .secondaryColor(secondaryColor)
-                .position(SlidrPosition.LEFT)
-                .scrimColor(Color.BLACK)
-                .scrimStartAlpha(0.8f)
-                .scrimEndAlpha(0f)
-                .distanceThreshold(0.25f)
-                .edge(true)
-                .edgeSize(0.18f)
-                .velocityThreshold(2400)
-                .touchSize(32)
-                .build();
-        slidr = Slidr.attach(this, slidrConfig);
     }
-    @Override
-    protected void onResume(){
-        super.onResume();
-       // price = mMenuDetailActivityViewImp.getNumPicked() * 100;
-        //mMenuDetailActivityViewImp.setPriceTextView(Integer.toString(price));
+
+    public void buyMenu(View v){
+        menuObject = new MenuObject(menuName, mMenuDetailActivityViewImp.getMenuQuantity(),mMenuDetailActivityViewImp.getMenuPriceTot());
+        if (mOrderJSON.getArrMenuObj().isEmpty()){
+            mOrderJSON.addMenuObj(menuObject);
+            Log.d(TAG, "Nama Menu: " + menuObject.getMenuName() + " | " + "Quantity: " + menuObject.getQuantitiy());
+        }
+        else if(menuObject.getMenuName() == mOrderJSON.getMenuByName(menuName).getMenuName()){
+            mOrderJSON.updateMenuObjByObject(menuObject);
+        } else {
+            mOrderJSON.addMenuObj(menuObject);
+        }
+        Intent intent = new Intent(this, MenuActivity.class);
+        startActivity(intent);
     }
+
 }
