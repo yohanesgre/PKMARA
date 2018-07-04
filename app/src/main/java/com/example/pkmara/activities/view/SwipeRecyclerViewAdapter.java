@@ -47,7 +47,7 @@ public class SwipeRecyclerViewAdapter extends RecyclerSwipeAdapter<SwipeRecycler
         viewHolder.EmailId.setText(String.valueOf((int)item.getPrice()));
         viewHolder.swipeLayout.setShowMode(SwipeLayout.ShowMode.PullOut);
         //dari kiri
-        viewHolder.swipeLayout.addDrag(SwipeLayout.DragEdge.Left, viewHolder.swipeLayout.findViewById(R.id.bottom_wrapper1));
+        //viewHolder.swipeLayout.addDrag(SwipeLayout.DragEdge.Left, viewHolder.swipeLayout.findViewById(R.id.bottom_wrapper1));
         //dari kanan
         viewHolder.swipeLayout.addDrag(SwipeLayout.DragEdge.Right, viewHolder.swipeLayout.findViewById(R.id.bottom_wraper));
         viewHolder.swipeLayout.addSwipeListener(new SwipeLayout.SwipeListener() {
@@ -77,14 +77,14 @@ public class SwipeRecyclerViewAdapter extends RecyclerSwipeAdapter<SwipeRecycler
                 Toast.makeText(mContext, " Click : " + item.getMenuName() + " \n" + String.valueOf(item.getQuantitiy()), Toast.LENGTH_SHORT).show();
             }
         });
-
+/*
         viewHolder.btnLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(v.getContext(), "Clicked on Information " + viewHolder.Name.getText().toString(), Toast.LENGTH_SHORT).show();
             }
         });
-
+*/
         viewHolder.Share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
