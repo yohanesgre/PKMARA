@@ -13,9 +13,9 @@ import android.widget.Toast;
 
 import com.daimajia.swipe.SwipeLayout;
 import com.daimajia.swipe.adapters.RecyclerSwipeAdapter;
+
 import com.example.pkmara.R;
 import com.example.pkmara.activities.presenter.MainActivity;
-import com.example.pkmara.activities.presenter.MenuActivity;
 import com.example.pkmara.activities.presenter.MenuDetailActivity;
 import com.example.pkmara.models.MenuObject;
 import com.example.pkmara.models.OrderJSON;
